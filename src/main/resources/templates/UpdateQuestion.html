@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+    <title>HS Stars | Create Question</title>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">
+    You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your
+    experience.
+</p>
+<![endif]-->
+
+<header>
+    <div class="page-header"></div>
+</header>
+<div class="text-center error-message p-3 mb-2 bg-danger text-white" hidden></div>
+<div class="text-center success-message p-3 mb-2 bg-success text-white" hidden> </div>
+<main hidden>
+    <div class="container py-5">
+        <div class="col-sm-6 form-group-lg mx-auto">
+            <h4 class="mb-3 text-center" id="page_function">Create Question</h4>
+            <form id="submitForm" class="align-items-center">
+                <div class="form-row mb-2">
+                    <div class="col">
+                        <div class="form-row mr-2">
+                            <label for="questionTitle">Title</label>
+                            <input type="text" class="form-control" id="questionTitle" placeholder="" value=""
+                                   required/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-row">
+                            <label for="questionType">Question Type</label>
+                            <select class="custom-select d-block w-100 form-control" id="questionType" required>
+                                <option value="">Choose...</option>
+                                <option value="0">Lesson</option>
+                                <option value="1">Sphere Question</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="lessonContentField" class="form-row mb-2" hidden>
+                    <label for="lessonContent">Lesson Content (LaTeX)</label>
+                    <textarea
+                            type="textbox"
+                            rows="10"
+                            class="form-control"
+                            id="lessonContent"
+                            placeholder=""
+                            value=""
+                    ></textarea>
+                </div>
+                <div id="questionWidgetField" class="form-row mb-3" hidden>
+                    <label for="widgetCode">Widget Code</label>
+                    <input type="text" class="form-control" id="widgetCode" placeholder="" value=""/>
+                </div>
+
+                <div class="form-row">
+                    <button class="col btn btn-success btn-block mt-2 mr-2" id="create-question" type="submit">Create
+                    </button>
+                    <button class="col btn btn-danger btn-block mt-2 mr-2" id="delete-question" hidden>Delete</button>
+                    <button onclick="goBack()" class="col btn btn-secondary btn-block mt-2">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script>
+    const questionId = "[[${questionId}]]";
+</script>
+<script src="https://dev.harbour.space:8443/auth/js/keycloak.js"></script>
+<script src="/js/util.js" defer></script>
+<script src="/js/UpdateQuestion.js" defer></script>
+</body>
+</html>

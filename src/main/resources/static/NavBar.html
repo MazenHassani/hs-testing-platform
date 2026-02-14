@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand">Harbour.Space Stars</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Courses</a>
+        </li>
+        <li class="nav-item teacher-view" hidden>
+          <a class="nav-link" href="/questions">Questions</a>
+        </li>
+      </ul>
+      <div class="my-2 my-lg-0">
+        <span class="mx-2">Hi, <span id="username">anonymous</span></span>
+        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="logout()">
+          logout <i class="fa fa-sign-out"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<script defer>
+  function isCourseManager() {
+    if (!keycloak || !keycloak.resourceAccess["testing-platform"] || !keycloak.resourceAccess["testing-platform"].roles)
+      return false;
+    return keycloak.resourceAccess["testing-platform"].roles.includes("course_manager");
+  }
+  if(isCourseManager()){
+    document.querySelector(".teacher-view").hidden = false;
+  }
+  if (!keycloak) {
+    window.keycloak = new Keycloak({
+      url: "https://dev.harbour.space:8443/auth",
+      realm: "HS",
+      clientId: "testing-platform",
+      "public-client": true,
+    });
+  }
+  keycloak.loadUserProfile().then((profile) => {
+    if (profile.firstName && profile.lastName) {
+      document.getElementById("username").textContent = `${profile.firstName} ${profile.lastName}`;
+    } else {
+      document.getElementById("username").textContent = profile.username;
+    }
+  });
+  function logout() {
+    keycloak.logout({
+      redirectUri: `http://${window.location.host}/`,
+    });
+  }
+</script>

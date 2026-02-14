@@ -1,0 +1,15 @@
+package com.harborspace.spacecraft.sphere.engine.response;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CompilerVersion {
+    private Integer id;
+    private String name;
+}

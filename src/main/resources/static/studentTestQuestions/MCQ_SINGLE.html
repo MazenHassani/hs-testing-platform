@@ -1,0 +1,15 @@
+<form class="container py-3 mcq_form">
+    <p id="questionStatement"></p>
+    <div class="form-group" id="choices">
+        <template class="choice-template">
+            <div class="form-check">
+                <input type="radio" name="radio-choice" class="form-check-input">
+                <label class="form-check-label"></label>
+            </div>
+        </template>
+    </div>
+    <button type="submit" class="mt-2 btn btn-primary" id="mizzo">Submit</button>
+    <script>
+        document.querySelector('#mizzo').addEventListener('click', mazenSubmission, false)
+    </script>
+</form>

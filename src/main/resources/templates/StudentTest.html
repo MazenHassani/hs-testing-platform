@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>HS Stars | Test</title>
+    <script src="https://SortableJS.github.io/Sortable/Sortable.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        #questions-list {
+            background-color: #f7f7f9;
+        }
+
+        #widget-container, #lesson-container {
+            height: 70vh;
+            width: 50vw;
+        }
+        body{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">
+    You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your
+    experience.
+</p>
+<![endif]-->
+
+<header>
+    <div class="page-header"></div>
+</header>
+<div class="text-center error-message p-3 mb-2 bg-danger text-white" hidden></div>
+<div class="text-center success-message p-3 mb-2 bg-success text-white" hidden> </div>
+<main class="container py-5" hidden>
+    <div class="row">
+        <h3 id="test-title" class="col p-2 text-dark font-weight-bold"></h3>
+        <button class="offset-1 col-1 mr-3 btn btn-block" onclick="goBack()"><i class="fa fa-arrow-left"></i>
+        </button>
+    </div>
+    <ul class="nav nav-pills d-flex mb-2 mt-2">
+        <li class="nav-item">
+            <a id="test-tab" class="nav-link" href="#test-container" data-toggle="tab" role="tab" aria-controls="test-container"
+               aria-selected="true">Test</a>
+        </li>
+        <li class="nav-item">
+            <a id="scoreboard" class="nav-link">Scoreboard</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="tabContent">
+        <div class="ml-2 tab-pane fade" id="test-container" role="tabpanel" aria-labelledby="test-tab">
+            <div class="d-flex">
+                <div class="col-3">
+                        <div class="row">
+                            <p class="text-secondary">Start time: <span class="text-dark font-weight-bold" id="test-start-time"></span>
+                            </p>
+                            <p class="text-secondary">Time left: <span class="text-dark font-weight-bold" id="test-current-time"></span>
+                            </p>
+                            <p class="text-secondary">End time: <span class="text-dark font-weight-bold" id="test-end-time"></span></p>
+                        </div>
+                        <ul id="questions-list" class="row mb-2 nav flex-column border border-2 border-primary rounded nav-pills">
+                            <template id="questions-list-item" hidden>
+                                <li class="nav-item">
+                                    <a class="nav-link question-title" href="#">question</a>
+                                </li>
+                            </template>
+                        </ul>
+                        <div class="row mb-2">
+                            <a href="#" class="btn" id="previous">&laquo; Previous</a>
+                            <a href="#" class="btn" id="next">Next &raquo;</a>
+                        </div>
+                </div>
+                <div class="col-5 offset-md-1">
+                        <div class="row">
+                            <p id="question-title" class="text-dark font-weight-bold"></p>
+                        </div>
+                        <div id="widget-container" class="card" hidden>
+                        </div>
+                        <template id="widget-template" class="row" hidden>
+                            <div
+                                    class="se-widget"
+                                    data-widget=""
+                                    data-user-id=""
+                                    data-custom-data="5"
+                            ></div></template>
+
+                        <div id="lesson-container" class="card" hidden>
+
+                        </div>
+                        <div id="question-container" hidden>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<script>
+    const courseId = "[[${courseId}]]";
+    const testId = "[[${testId}]]";
+    let index = "[[${index}]]";
+</script>
+<script>
+    /*<![CDATA[*/
+    MathJax = {
+        tex: {
+            inlineMath: [ ['$', '$'], ['\\(', '\\)'] ]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    /*]]>*/
+</script>
+<script src="https://dev.harbour.space:8443/auth/js/keycloak.js"></script>
+<script src="/js/util.js" defer></script>
+<script src="/js/StudentTest.js" defer></script>
+<!--<script src="/js/Scoreboard.js" defer></script>-->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

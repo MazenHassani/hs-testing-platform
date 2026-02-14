@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8"/>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <title>HS Stars | Scoreboard</title>
+</head>
+<body>
+<header>
+    <div class="page-header"></div>
+</header>
+<div class="text-center error-message p-3 mb-2 bg-danger text-white" hidden></div>
+<div class="text-center success-message p-3 mb-2 bg-success text-white" hidden></div>
+<main hidden>
+    <div class="container py-5">
+        <div class="row">
+            <h3 id="test-title" class="col p-2 text-dark font-weight-bold"></h3>
+            <button class="offset-1 col-1 mr-3 btn btn-block" onclick="goBack()"><i class="fa fa-arrow-left"></i>
+            </button>
+        </div>
+        <ul class="row nav nav-pills d-flex mb-2 mt-2" hidden>
+
+            <li class="nav-item">
+                <a id="test" class="nav-link">Test</a>
+            </li>
+            <li class="nav-item">
+                <a id="scoreboard-tab" class="nav-link" href="#scoreboard-container" data-toggle="tab" role="tab"
+                   aria-controls="scoreboard-container"
+                   aria-selected="true">Scoreboard</a>
+            </li>
+        </ul>
+
+        <div class="ml-2 tab-pane fade" id="scoreboard-container" role="tabpanel" aria-labelledby="scoreboard-tab">
+            <table id="scoreboard-table" class="mt-2 table table-striped">
+                <thead class="thead-dark">
+                <tr class="d-flex">
+                    <th id="user-col" class="text-center col-3">Participant</th>
+                    <th id="score-col" class="text-center col">Total Score</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="submission-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="container py-5 modal-dialog modal-lg">
+                <div class="container m-2 py-5 modal-content">
+                    <h4>Source:</h4>
+                    <textarea rows="15" disabled id="code" class="mt-2">
+                    </textarea>
+                    <button data-dismiss="modal" class="mt-4 btn btn-block btn-secondary">Back</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <template id="user-score" class="hidden">
+            <tr class="d-flex">
+                <td class="text-center col-3 user-id">User Id</td>
+                <td class="text-center col total-score">Total Score</td>
+            </tr>
+        </template>
+
+    </div>
+</main>
+<script>
+    const courseId = "[[${courseId}]]";
+    const testId = "[[${testId}]]";
+</script>
+<style>
+    .highlight-color {
+        background-color: #808080;
+    }
+</style>
+<script src="https://dev.harbour.space:8443/auth/js/keycloak.js"></script>
+<script src="/js/util.js" defer></script>
+<script src="/js/Scoreboard.js" defer></script>
+</body>
+</html>

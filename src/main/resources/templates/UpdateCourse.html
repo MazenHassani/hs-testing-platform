@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>HS Stars | Create Course</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">
+    You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your
+    experience.
+</p>
+<![endif]-->
+
+<header>
+    <div class="page-header"></div>
+</header>
+<div class="text-center error-message p-3 mb-2 bg-danger text-white" hidden></div>
+<div class="text-center success-message p-3 mb-2 bg-success text-white" hidden> </div>
+<main hidden>
+    <div class="container py-5">
+        <div class="col-sm-6 form-group-lg mx-auto">
+            <h4 class="mb-3 text-center" id="page_function">Create Course</h4>
+            <form id="submitForm" class="align-items-center">
+                <div class="form-row mb-2">
+                    <label for="course-name">Course Name</label>
+                    <input type="text" class="form-control mr-2" id="course-name" name="course-name" required/>
+                </div>
+
+                <div class="form-row mb-2">
+                    <div class="col">
+                        <div class="form-row mt-2">
+                            <label for="course-start-date">Starts on</label>
+                        </div>
+                        <div class="form-row">
+                            <input type="date" id="course-start-date" class="form-control mb-2 mr-2"
+                                   name="course-start-date" required/>
+                            <input type="time" id="course-start-time" class="form-control mb-2 mr-2"
+                                   name="course-start-time" required/>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-row mt-2">
+                            <label for="course-end-date">Ends on</label>
+                        </div>
+                        <div class="form-row">
+                            <input type="date" id="course-end-date" class="form-control mb-2 mr-2"
+                                   name="course-end-date" required/>
+                            <input type="time" id="course-end-time" class="form-control mb-2 mr-2"
+                                   name="course-end-time" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button id="save-course" class="col btn btn-success btn-block mt-2 mr-2" type="submit">Create
+                    </button>
+                    <button id="delete-course" class="col btn btn-danger btn-block mt-2 mr-2" hidden>Delete</button>
+                    <button onclick="goBack()" class="col btn btn-secondary btn-block mt-2">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script>
+    const courseId = "[[${courseId}]]";
+</script>
+<script src="https://dev.harbour.space:8443/auth/js/keycloak.js"></script>
+<script src="/js/util.js" defer></script>
+<script src="/js/UpdateCourse.js" defer></script>
+</body>
+</html>

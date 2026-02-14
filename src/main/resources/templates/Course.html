@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>HS Stars</title>
+    <!--    <meta name="description" content="" />-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">
+    You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your
+    experience.
+</p>
+<![endif]-->
+<header>
+    <div class="page-header"></div>
+</header>
+<div class="text-center error-message p-3 mb-2 bg-danger text-white" hidden> </div>
+<div class="text-center success-message p-3 mb-2 bg-success text-white" hidden> </div>
+<main hidden>
+    <div class="container py-5">
+        <div class="row mb-3">
+            <span id="course-id" hidden></span>
+            <h2 id="course-name" class="col">Course</h2>
+            <div class="col-3">
+                <button class="btn" onclick="goBack()"><i class="fa fa-arrow-left"></i></button>
+
+                <button id="update-course" class="btn teacher-view" hidden><i class="fa fa-pencil"></i></button>
+                <button id="add-test" class="btn teacher-view" hidden><i class="fa fa-plus"></i></button>
+                <button id="invite-users" class="btn teacher-view" hidden><i class="fa fa-envelope"></i></button>
+            </div>
+        </div>
+        <p class="row ml-2" id="course-start-date"></p>
+        <p class="row ml-2" id="course-end-date"></p>
+
+        <ul class="mb-2 nav nav-pills">
+            <li class="nav-item">
+                <a id="tests-tab" class="nav-link" href="#tests" data-toggle="tab" role="tab" aria-controls="tests"
+                   aria-selected="true">Tests</a>
+            </li>
+            <li class="nav-item">
+                <a id="participants-tab" class="nav-link" href="#participants" data-toggle="tab" role="tab"
+                   aria-controls="participants" aria-selected="false">Participants</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="container tab-pane fade" id="tests" role="tabpanel" aria-labelledby="tests-tab">
+                <h6 class="mt-4 mb-4">Current</h6>
+                <div class="mb-4">
+                    <table id="current-test-list" class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr class="d-flex">
+                            <th class="col" hidden>ID</th>
+                            <th class="col">Name</th>
+                            <th class="col-2">Start date</th>
+                            <th class="col-2">End date</th>
+                            <th class="col-2 test-tasks-header">Enter</th>
+                            <th class="col-2 test-scoreboard-header">Scoreboard</th>
+                            <th class="col-2  test-update-header teacher-view" hidden>Update</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <h6 class="mt-4 mb-4">Upcoming</h6>
+                <div class="mb-4">
+                    <table id="upcoming-test-list" class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr class="d-flex">
+                            <th class="col" hidden>ID</th>
+                            <th class="col">Name</th>
+                            <th class="col-2">Start date</th>
+                            <th class="col-2">End date</th>
+                            <th class="col-2 teacher-view" hidden>Update</th>
+                            <th class="col-2 teacher-view" hidden>Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <h6 class="mt-4 mb-4">Past</h6>
+                <div class="mb-4">
+                    <table id="past-test-list" class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr class="d-flex">
+                            <th class="col" hidden>ID</th>
+                            <th class="col">Name</th>
+                            <th class="col-2">Start date</th>
+                            <th class="col-2">End date</th>
+                            <th class="col-2">Enter</th>
+                            <th class="col-2">Scoreboard</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="container tab-pane fade" id="participants" role="tabpanel" aria-labelledby="participants-tab">
+                <h6 class="mt-4 mb-4">Teachers</h6>
+                <div class="mb-4">
+                    <table id="teachers-list" class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr class="d-flex">
+                            <th class="col" hidden>ID</th>
+                            <th class="col">User ID</th>
+                            <th class="col">Invited on</th>
+                            <th class="col">Accepted On</th>
+                            <th class="col teacher-view" hidden>Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <h6 class="mt-4 mb-4">Students</h6>
+                <div class="mb-4">
+                    <table id="students-list" class="table table-striped">
+                        <thead class="thead-dark">
+                        <tr class="d-flex">
+                            <th class="col" hidden>ID</th>
+                            <th class="col" hidden>User ID</th>
+                            <th class="col">Username</th>
+                            <th class="col">Invited on</th>
+                            <th class="col">Accepted On</th>
+                            <th class="col teacher-view" hidden>Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<template id="test-template" class="hidden">
+    <tr class="d-flex">
+        <td class="col test-id" hidden></td>
+        <td class="col-sm test-name"></td>
+        <td class="col-sm-2 test-start-date"></td>
+        <td class="col-sm-2 test-end-date"></td>
+        <td class="col-sm-2 test-tasks">
+            <button class="btn"><i class="fa fa-arrow-right"></i></button>
+        </td>
+        <td class="col-sm-2 test-scoreboard">
+            <button class="btn"><i class="fa fa-list"></i></button>
+        </td>
+        <td class="col-sm-2 test-update teacher-view" hidden>
+            <button class="btn"><i class="fa fa-pencil"></i></button>
+        </td>
+        <td class="col-sm-2 test-remove teacher-view" hidden>
+            <button class="btn"><i class="fa fa-trash"></i></button>
+        </td>
+    </tr>
+</template>
+<template id="invite-template" class="hidden">
+    <tr class="d-flex">
+        <td class="col invite-id" hidden></td>
+        <td class="col invite-user-id" hidden></td>
+        <td class="col invite-user-name"></td>
+        <td class="col invite-date"></td>
+        <td class="col invite-accept-date"></td>
+        <td class="col invite-remove teacher-view" hidden>
+            <button class="btn"><i class="fa fa-trash"></i></button>
+        </td>
+    </tr>
+</template>
+<script>
+    const courseId = "[[${courseId}]]";
+</script>
+<script src="https://dev.harbour.space:8443/auth/js/keycloak.js"></script>
+<script src="/js/util.js" defer></script>
+<script src="/js/Course.js" defer></script>
+</body>
+</html>

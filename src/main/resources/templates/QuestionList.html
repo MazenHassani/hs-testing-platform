@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8"/>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <title>HS Stars | My Questions</title>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">
+    You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your
+    experience.
+</p>
+<![endif]-->
+
+<header>
+    <div class="page-header"></div>
+</header>
+<div class="text-center error-message p-3 mb-2 bg-danger text-white" hidden> </div>
+<div class="text-center success-message p-3 mb-2 bg-success text-white" hidden> </div>
+<main hidden>
+    <div class="container py-5">
+        <div class="row">
+            <h2 class="col">My Questions</h2>
+            <button class="btn mr-2 mt-1 col-1" onclick="goBack()"><i class="fa fa-arrow-left"></i></button>
+            <button class="btn mr-2 mt-1 col-1" id="create-question"><i class="fa fa-plus"></i></button>
+        </div>
+        <ul class="mt-4 mb-3 nav nav-pills d-flex">
+            <li class="nav-item">
+                <a
+                        id="all-tab"
+                        class="nav-link"
+                        href="#all"
+                        data-toggle="tab"
+                        role="tab"
+                        aria-controls="all"
+                        aria-selected="true"
+                >All</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                        id="widgets-tab"
+                        class="nav-link"
+                        href="#widgets"
+                        data-toggle="tab"
+                        role="tab"
+                        aria-controls="widgets"
+                        aria-selected="false"
+                >Widgets</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                        id="lessons-tab"
+                        class="nav-link"
+                        href="#lessons"
+                        data-toggle="tab"
+                        role="tab"
+                        aria-controls="lessons"
+                        aria-selected="true"
+                >Lessons</a
+                >
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+                <table id="all-table" class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr class="d-flex">
+                        <th class="col-6">Title</th>
+                        <th class="col-4">Type</th>
+                        <th class="col-1">Edit</th>
+                        <th class="col-1">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="widgets" role="tabpanel" aria-labelledby="widgets-tab">
+                <table id="widgets-table" class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr class="d-flex">
+                        <th class="col">Title</th>
+                        <th class="col-1">Edit</th>
+                        <th class="col-1">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="lessons" role="tabpanel" aria-labelledby="lessons-tab">
+                <table id="lessons-table" class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr class="d-flex">
+                        <th class="col">Title</th>
+                        <th class="col-1">Edit</th>
+                        <th class="col-1">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <template id="all-question-item-template" class="hidden">
+            <tr class="d-flex">
+                <td class="col-sm-6 pt-3 question-title">name</td>
+                <td class="col-sm-4 pt-3 question-type">widget</td>
+                <td class="col-sm-1">
+                    <button class="btn question-edit"><i class="fa fa-edit"></i></button>
+                </td>
+                <td class="col-sm-1">
+                    <button class="btn question-delete"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        </template>
+        <template id="question-item-template" class="hidden">
+            <tr class="d-flex">
+                <td class="col-sm-10 pt-3 question-title">name</td>
+                <td class="col-sm-1">
+                    <button class="btn question-edit"><i class="fa fa-edit"></i></button>
+                </td>
+                <td class="col-sm-1">
+                    <button class="btn question-delete"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        </template>
+    </div>
+</main>
+
+<script src="https://dev.harbour.space:8443/auth/js/keycloak.js"></script>
+<script src="/js/util.js" defer></script>
+<script src="/js/QuestionList.js" defer></script>
+</body>
+</html>

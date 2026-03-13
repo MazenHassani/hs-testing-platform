@@ -1,0 +1,36 @@
+spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+spring.servlet.multipart.max-file-size=128KB
+spring.servlet.multipart.max-request-size=128KB
+
+sphere.version=v4
+sphere.endpoint=YOUR_SPHERE_ENDPOINT
+sphere.problems.token=YOUR_SPHERE_PROBLEMS_TOKEN
+sphere.compilers.token=YOUR_SPHERE_COMPILERS_TOKEN
+
+
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=private/swagger-ui
+springdoc.swagger-ui.operationsSorter=method
+#sample springdoc http://localhost:8080/api/private/swagger-ui/index.html?configUrl=/api/api-docs/swagger-config#/sphere-engine-controler
+
+keycloak.principal-attribute=preferred_username
+
+keycloak.realm=HS
+keycloak.cors=true
+keycloak.auth-server-url = https://dev.harbour.space:8443/auth/
+keycloak.resource=testing-platform
+keycloak.use-resource-role-mappings=true
+keycloak.public-client=true
+keycloak.ssl-required = none
+
+sendgrid.api.key=YOUR_SENDGRID_API_KEY
+sendgrid.templateId = YOUR_SENDGRID_TEMPLATE_ID
+
+invitation.from=space.craft@harbour.space
+invitation.subject=Class invitation: "%s"
+invitation.message=<b>Hello</b>,<br/> \n\
+You are invited to the class: %s<br/> \n\
+<a href="%s">link to join</a>
+
+logging.file.path=logs
+logging.level.web=ERROR

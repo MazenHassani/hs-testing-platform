@@ -1,0 +1,11 @@
+# Secrets
+application.properties
+!application.properties.example
+# Build
+target/
+*.jar
+*.war
+# IDE
+.idea/
+*.iml
+.vscode/

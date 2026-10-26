@@ -25,26 +25,11 @@ git clone <repo-url>
 cd hs-testing-platform
 ```
 
-### 2. Configure application properties
+### 2. Provision external credentials
 
-```bash
-cp src/main/resources/application.properties.example src/main/resources/application.properties
-```
+Follow [CREDENTIALS_SETUP.md](CREDENTIALS_SETUP.md) to supply database, mail and service credentials through the process environment or deployment secret store. The tracked application properties now reference environment variables and contain no deployable credential defaults. Do not overwrite them with a credentials file or commit real values.
 
-Then edit `application.properties` and fill in your credentials:
-
-| Key | Description |
-|-----|-------------|
-| `sphere.endpoint` | Your Sphere Engine endpoint hash |
-| `sphere.problems.token` | Sphere Engine Problems API token |
-| `sphere.compilers.token` | Sphere Engine Compilers API token |
-| `sendgrid.api.key` | SendGrid API key for invitation emails |
-| `sendgrid.templateId` | SendGrid email template ID |
-| `keycloak.auth-server-url` | Keycloak authentication server URL |
-
-> ⚠️ **Never commit `application.properties`** — it's in `.gitignore`. Only `application.properties.example` (with placeholder values) is tracked.
-
----
+The same requirements apply to integration-test service tokens. Existing database volumes retain their own credentials: changing source configuration alone does not rotate those accounts.
 
 ## Running with Docker
 
